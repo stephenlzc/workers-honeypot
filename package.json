@@ -1,0 +1,14 @@
+{
+  "name": "openclaw-honeypot",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init:local": "wrangler d1 execute openclaw-honeypot --local --file=schema.sql",
+    "db:init:remote": "wrangler d1 execute openclaw-honeypot --file=schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^3.101.0"
+  }
+}
