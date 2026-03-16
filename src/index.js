@@ -394,6 +394,12 @@ function getAllHeaders(request) {
   return JSON.stringify(obj);
 }
 function nowISO() { return new Date().toISOString(); }
+function toCST(isoStr) {
+  if (!isoStr) return '';
+  const d = new Date(isoStr);
+  const cst = new Date(d.getTime() + 8 * 3600 * 1000);
+  return cst.toISOString().slice(0, 19).replace('T', ' ');
+}
 function escapeHtml(s) {
   if (typeof s !== 'string') return '';
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
@@ -714,7 +720,7 @@ function htmlAdminDashboard(stats,attacks,bans,page,totalPages,filters){
 <td class="tip" data-tip="${escapeHtml(bodyTip)}" style="font-family:monospace;font-size:12px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(a.path)}</td>
 <td>${typeStr}</td>
 <td>${sc(a.severity||'CLEAN')}</td>
-<td style="color:#6b7280;font-size:12px;white-space:nowrap">${(a.timestamp||'').slice(0,19).replace('T',' ')}</td>
+<td style="color:#6b7280;font-size:12px;white-space:nowrap">${toCST(a.timestamp)}</td>
 <td class="tip" data-tip="${escapeHtml(uaTip)}" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#9ca3af;font-size:11px">${escapeHtml((a.user_agent||'').slice(0,50))}</td>
 </tr>`;
   }).join('');
