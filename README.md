@@ -193,6 +193,20 @@ wrangler.example.toml   safe configuration template
 
 This project reports observations from your own honeypot deployment. It is not a replacement for a commercial threat-intelligence platform, an attribution system, or a real network-route tracer. Coordinates are Cloudflare GeoIP estimates and target nodes are visualization endpoints.
 
+## Acknowledgements
+
+This project is built on and informed by the following open-source projects, platforms, visual references, and public research:
+
+- [OpenClaw Honey-Pot](https://github.com/inwpu/openclaw-Honey-Pot) — upstream Worker, OpenClaw decoy surface, shell simulation, schema, and initial Admin flow.
+- [hono-honeypot](https://github.com/ph33nx/hono-honeypot) — source of adapted attack-detection patterns used by the analyzer.
+- [kumogakure](https://github.com/turntuptechnologies-ai/kumogakure), [HoneyPot](https://github.com/Jack-Rolls/HoneyPot), and [workers-tarpit](https://github.com/crumrine/workers-tarpit) — architecture and honeypot design references.
+- [Kaspersky Cybermap](https://cybermap.kaspersky.com/) and [FortiGuard Threat Map](https://fortiguard.fortinet.com/threat-map) — visual references for the threat globe and attack-flow presentation.
+- [globe.gl](https://github.com/vasturiano/globe.gl), [world-atlas](https://github.com/topojson/world-atlas), [topojson-client](https://github.com/topojson/topojson-client), and [Chart.js](https://github.com/chartjs/Chart.js) — open-source visualization libraries used by the console.
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/), [D1](https://developers.cloudflare.com/d1/), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/) — runtime, storage, and deployment tooling.
+- OpenClaw, MCP/MCPwn, Langflow, n8n, and Open WebUI documentation, together with public security research from Rapid7, SentinelOne, arXiv, Practical DevSecOps, Sysdig, Cato, Sangfor, and secrss — threat-modeling context for the decoy surfaces and detection rules.
+
+These sources are credited for code lineage, tooling, design inspiration, or research context as noted above. This project is not affiliated with or endorsed by them.
+
 ## License and responsible use
 
 Review the license and applicable laws before deployment. Use this project only on infrastructure you own or are authorized to monitor. Keep the honeypot isolated from production systems and review collected data under your organization’s privacy policy.

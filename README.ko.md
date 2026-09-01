@@ -67,3 +67,17 @@ npm run setup:cloudflare
 미끼 키, 토큰, 파일 및 사용자는 모두 가짜입니다. 비밀번호 평문은 저장하지 않고 식별자 해시, 길이, 패턴 레이블만 보관합니다.
 
 기본 관리자 비밀번호는 없습니다. `npx wrangler secret put ADMIN_PASSWORD`로 설정하세요. Deploy Button은 Worker만 자동화하며 D1과 Secret은 사용자의 승인이 필요합니다.
+
+## 감사의 글
+
+이 프로젝트는 다음 오픈 소스 프로젝트, 플랫폼, 시각적 참고 자료와 공개 연구를 바탕으로 합니다.
+
+- [OpenClaw Honey-Pot](https://github.com/inwpu/openclaw-Honey-Pot): 상위 Worker, OpenClaw 디코이 화면, 셸 시뮬레이션, 스키마와 초기 Admin 흐름.
+- [hono-honeypot](https://github.com/ph33nx/hono-honeypot): 분석기에 적용하고 확장한 공격 탐지 패턴의 출처.
+- [kumogakure](https://github.com/turntuptechnologies-ai/kumogakure), [HoneyPot](https://github.com/Jack-Rolls/HoneyPot), [workers-tarpit](https://github.com/crumrine/workers-tarpit): 허니팟 아키텍처와 설계 참고 자료.
+- [Kaspersky Cybermap](https://cybermap.kaspersky.com/) 및 [FortiGuard Threat Map](https://fortiguard.fortinet.com/threat-map): 위협 지구본과 공격 흐름 표현의 시각적 참고 자료.
+- [globe.gl](https://github.com/vasturiano/globe.gl), [world-atlas](https://github.com/topojson/world-atlas), [topojson-client](https://github.com/topojson/topojson-client), [Chart.js](https://github.com/chartjs/Chart.js): 콘솔에서 사용하는 오픈 소스 시각화 라이브러리.
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/), [D1](https://developers.cloudflare.com/d1/), [Wrangler](https://developers.cloudflare.com/workers/wrangler/): 실행 환경, 저장소와 배포 도구.
+- OpenClaw, MCP/MCPwn, Langflow, n8n, Open WebUI의 공개 문서와 Rapid7, SentinelOne, arXiv, Practical DevSecOps, Sysdig, Cato, Sangfor, secrss의 공개 보안 연구: 위협 모델링 참고 자료.
+
+각 출처는 코드 계보, 도구, 디자인 영감 또는 연구 배경으로 구분해 기재했습니다. 본 프로젝트는 해당 프로젝트나 조직과 제휴하거나 보증받지 않았습니다.

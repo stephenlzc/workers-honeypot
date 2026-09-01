@@ -67,3 +67,17 @@ O script cria ou reutiliza o D1, aplica o schema, solicita `ADMIN_PASSWORD` como
 Chaves, tokens, arquivos e usuários de isca são fictícios. Senhas nunca são armazenadas em texto claro; somente hashes de identificadores, comprimento e rótulos de padrão são mantidos.
 
 Não existe senha administrativa padrão: use `npx wrangler secret put ADMIN_PASSWORD`. O Deploy Button automatiza apenas o Worker; D1 e o Secret exigem autorização do fork.
+
+## Agradecimentos
+
+Este projeto se baseia nos seguintes projetos de código aberto, plataformas, referências visuais e pesquisas públicas:
+
+- [OpenClaw Honey-Pot](https://github.com/inwpu/openclaw-Honey-Pot): Worker upstream, superfície de isca OpenClaw, shell simulado, schema e fluxo Admin inicial.
+- [hono-honeypot](https://github.com/ph33nx/hono-honeypot): origem dos padrões de detecção adaptados no analisador.
+- [kumogakure](https://github.com/turntuptechnologies-ai/kumogakure), [HoneyPot](https://github.com/Jack-Rolls/HoneyPot) e [workers-tarpit](https://github.com/crumrine/workers-tarpit): referências de arquitetura e design de honeypots.
+- [Kaspersky Cybermap](https://cybermap.kaspersky.com/) e [FortiGuard Threat Map](https://fortiguard.fortinet.com/threat-map): referências visuais para o globo e os fluxos de ataque.
+- [globe.gl](https://github.com/vasturiano/globe.gl), [world-atlas](https://github.com/topojson/world-atlas), [topojson-client](https://github.com/topojson/topojson-client) e [Chart.js](https://github.com/chartjs/Chart.js): bibliotecas de visualização usadas pelo console.
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/), [D1](https://developers.cloudflare.com/d1/) e [Wrangler](https://developers.cloudflare.com/workers/wrangler/): ambiente de execução, armazenamento e ferramentas de deploy.
+- Documentação pública de OpenClaw, MCP/MCPwn, Langflow, n8n e Open WebUI, além de pesquisas públicas de Rapid7, SentinelOne, arXiv, Practical DevSecOps, Sysdig, Cato, Sangfor e secrss: contexto para o modelamento de ameaças.
+
+As fontes são reconhecidas por sua linhagem de código, ferramentas, inspiração de design ou contexto de pesquisa. Este projeto não é afiliado nem endossado por elas.

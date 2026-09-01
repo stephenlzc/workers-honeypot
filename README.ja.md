@@ -67,3 +67,17 @@ npm run setup:cloudflare
 おとりのキー、トークン、ファイル、ユーザーは架空です。パスワードの平文は保存せず、識別子ハッシュ、長さ、パターンラベルのみ保持します。
 
 デフォルトの管理者パスワードはありません。`npx wrangler secret put ADMIN_PASSWORD` を実行してください。Deploy Button は Worker のみを自動化し、D1 と Secret は利用者の承認が必要です。
+
+## 謝辞
+
+本プロジェクトは、以下のオープンソースプロジェクト、プラットフォーム、ビジュアル参考資料、公開研究を基にしています。
+
+- [OpenClaw Honey-Pot](https://github.com/inwpu/openclaw-Honey-Pot)：上流 Worker、OpenClaw のデコイ画面、シェルシミュレーション、スキーマ、初期 Admin フロー。
+- [hono-honeypot](https://github.com/ph33nx/hono-honeypot)：アナライザーに適用・拡張した攻撃検出パターン。
+- [kumogakure](https://github.com/turntuptechnologies-ai/kumogakure)、[HoneyPot](https://github.com/Jack-Rolls/HoneyPot)、[workers-tarpit](https://github.com/crumrine/workers-tarpit)：ハニーポットのアーキテクチャと設計の参考。
+- [Kaspersky Cybermap](https://cybermap.kaspersky.com/) と [FortiGuard Threat Map](https://fortiguard.fortinet.com/threat-map)：脅威地球儀と攻撃フロー表示のビジュアル参考。
+- [globe.gl](https://github.com/vasturiano/globe.gl)、[world-atlas](https://github.com/topojson/world-atlas)、[topojson-client](https://github.com/topojson/topojson-client)、[Chart.js](https://github.com/chartjs/Chart.js)：コンソールで使用するオープンソース可視化ライブラリ。
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/)、[D1](https://developers.cloudflare.com/d1/)、[Wrangler](https://developers.cloudflare.com/workers/wrangler/)：実行環境、ストレージ、デプロイツール。
+- OpenClaw、MCP/MCPwn、Langflow、n8n、Open WebUI の公開ドキュメント、および Rapid7、SentinelOne、arXiv、Practical DevSecOps、Sysdig、Cato、Sangfor、secrss の公開セキュリティ研究：脅威モデルの参考。
+
+各ソースは、コードの系譜、ツール、デザインの着想、または研究背景として記載しています。本プロジェクトは各プロジェクト・組織と提携・推奨関係にありません。

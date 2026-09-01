@@ -94,6 +94,20 @@ Cloudflare Deploy Button 只能自动化 Worker 流程；D1 创建和 Admin Secr
 
 本项目只展示你自己的蜜罐观测数据，不是商业威胁情报平台、攻击归因系统或真实网络路由追踪器。
 
+## 致谢（Acknowledgements）
+
+本项目基于并参考了以下开源项目、平台、视觉案例和公开研究资料：
+
+- [OpenClaw Honey-Pot](https://github.com/inwpu/openclaw-Honey-Pot)：上游 Worker、OpenClaw 诱饵界面、假 Shell、Schema 和初始 Admin 流程。
+- [hono-honeypot](https://github.com/ph33nx/hono-honeypot)：攻击检测器中采用并扩展的攻击模式来源。
+- [kumogakure](https://github.com/turntuptechnologies-ai/kumogakure)、[HoneyPot](https://github.com/Jack-Rolls/HoneyPot)、[workers-tarpit](https://github.com/crumrine/workers-tarpit)：蜜罐架构和设计参考。
+- [Kaspersky Cybermap](https://cybermap.kaspersky.com/)、[FortiGuard Threat Map](https://fortiguard.fortinet.com/threat-map)：全球威胁球体和攻击流展示的视觉参考。
+- [globe.gl](https://github.com/vasturiano/globe.gl)、[world-atlas](https://github.com/topojson/world-atlas)、[topojson-client](https://github.com/topojson/topojson-client)、[Chart.js](https://github.com/chartjs/Chart.js)：控制台使用的开源可视化库。
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/)、[D1](https://developers.cloudflare.com/d1/)、[Wrangler](https://developers.cloudflare.com/workers/wrangler/)：运行时、存储和部署工具。
+- OpenClaw、MCP/MCPwn、Langflow、n8n、Open WebUI 的公开文档，以及 Rapid7、SentinelOne、arXiv、Practical DevSecOps、Sysdig、Cato、Sangfor 和 secrss 的公开安全研究：用于诱饵界面和检测规则的威胁建模参考。
+
+以上来源分别用于代码溯源、工具、设计灵感或研究背景。本项目与这些项目和机构没有隶属或背书关系。
+
 ## 路线图
 
 高流量球体聚合、签名导出包和经过隐私审查的可选告警接收器。

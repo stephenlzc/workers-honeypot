@@ -68,3 +68,17 @@ El script crea o reutiliza D1, aplica el esquema, solicita `ADMIN_PASSWORD` como
 Las claves, tokens, archivos y usuarios señuelo son ficticios. Las contraseñas recibidas nunca se guardan en texto plano: solo se conservan hashes de identificadores, longitud y etiquetas de patrón.
 
 No hay contraseña predeterminada: configura `npx wrangler secret put ADMIN_PASSWORD`. El Deploy Button automatiza el Worker, pero D1 y el Secret requieren autorización. Los resultados son observaciones de tu propio honeypot, no atribución global.
+
+## Agradecimientos
+
+Este proyecto se basa en los siguientes proyectos de código abierto, plataformas, referencias visuales e investigaciones públicas:
+
+- [OpenClaw Honey-Pot](https://github.com/inwpu/openclaw-Honey-Pot): Worker upstream, superficie señuelo de OpenClaw, shell simulado, esquema y flujo Admin inicial.
+- [hono-honeypot](https://github.com/ph33nx/hono-honeypot): fuente de los patrones de detección adaptados en el analizador.
+- [kumogakure](https://github.com/turntuptechnologies-ai/kumogakure), [HoneyPot](https://github.com/Jack-Rolls/HoneyPot) y [workers-tarpit](https://github.com/crumrine/workers-tarpit): referencias de arquitectura y diseño de honeypots.
+- [Kaspersky Cybermap](https://cybermap.kaspersky.com/) y [FortiGuard Threat Map](https://fortiguard.fortinet.com/threat-map): referencias visuales para el globo y los flujos de ataque.
+- [globe.gl](https://github.com/vasturiano/globe.gl), [world-atlas](https://github.com/topojson/world-atlas), [topojson-client](https://github.com/topojson/topojson-client) y [Chart.js](https://github.com/chartjs/Chart.js): bibliotecas de visualización usadas por la consola.
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/), [D1](https://developers.cloudflare.com/d1/) y [Wrangler](https://developers.cloudflare.com/workers/wrangler/): plataforma y herramientas de ejecución, almacenamiento y despliegue.
+- Documentación pública de OpenClaw, MCP/MCPwn, Langflow, n8n y Open WebUI, junto con investigaciones de Rapid7, SentinelOne, arXiv, Practical DevSecOps, Sysdig, Cato, Sangfor y secrss: contexto de modelado de amenazas.
+
+Las fuentes se reconocen por su linaje de código, herramientas, inspiración de diseño o contexto de investigación. Este proyecto no está afiliado ni respaldado por ellas.
