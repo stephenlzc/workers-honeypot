@@ -17,16 +17,41 @@ Um honeypot multi-skin em Cloudflare Workers e D1 para pesquisa defensiva, telem
 - Estatísticas agregadas de padrões e comprimentos de senha
 - Mais de 200 padrões de detecção
 
-## Início rápido
-
 ## Capturas e arquitetura
 
-![Console](docs/screenshots/console-globe.png)
-![Attack feed](docs/screenshots/attack-feed.png)
-![Credential intelligence](docs/screenshots/credential-intelligence.png)
-![Honeypot themes](docs/screenshots/honeypot-themes.png)
+### Console de operações
+
+O console ao vivo reúne o globo de ameaças WebGL, os arcos animados de origem para destino, os cartões de tendência e o feed de eventos em uma única visão.
+
+<p align="center"><img src="docs/screenshots/console-globe.png" alt="Renderização real do globo WebGL e do console" width="100%" /></p>
+
+### Feed de ataques ao vivo
+
+Cada evento mostra o endereço de origem observado, o honeypot de destino, método e rota, severidade, Threat Score e Bot Score. Os dados são telemetria sintética local.
+
+<p align="center"><img src="docs/screenshots/attack-feed.png" alt="Renderização real do feed de ataques" width="78%" /></p>
+
+### Inteligência de credenciais e ataques
+
+O painel agrega padrões e comprimentos de senha, tipos de identificador e métodos de ataque. Senhas em texto claro nunca são armazenadas ou exibidas.
+
+<p align="center"><img src="docs/screenshots/credential-intelligence.png" alt="Renderização real do painel de inteligência de credenciais" width="78%" /></p>
+
+### Temas de honeypot
+
+As quatro skins compartilham um único mecanismo de telemetria e apresentam superfícies OpenClaw, MCP, Langflow e n8n.
+
+<p align="center"><img src="docs/screenshots/honeypot-themes.png" alt="Temas de honeypot multi-skin" width="92%" /></p>
 
 As solicitações são roteadas para quatro skins, um analisador comum grava no D1 e a API Admin protegida mostra globo, feed e agregados de credenciais.
+
+### Cloudflare Deploy Button
+
+Cloudflare Workers é a maneira mais rápida de testar o projeto. Faça o Fork primeiro e use o botão oficial para iniciar o deploy:
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/stephenlzc/workers-honeypot)
+
+O botão inicia o fluxo do Worker, mas o D1 e o Secret `ADMIN_PASSWORD` ainda exigem autorização e configuração no seu Fork.
 
 ```bash
 git clone https://github.com/stephenlzc/workers-honeypot.git

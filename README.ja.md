@@ -17,16 +17,41 @@ Cloudflare Workers と D1 で動作する多テーマ honeypot です。防御�
 - パスワードの長さ・パターン・識別子種別の集計
 - 200 以上の攻撃検出パターン
 
-## クイックスタート
-
 ## スクリーンショットと構成
 
-![Console](docs/screenshots/console-globe.png)
-![Attack feed](docs/screenshots/attack-feed.png)
-![Credential intelligence](docs/screenshots/credential-intelligence.png)
-![Honeypot themes](docs/screenshots/honeypot-themes.png)
+### オペレーションコンソール
+
+ライブコンソールは WebGL 脅威地球儀、送信元から対象へのアーク、トレンドカード、イベントフィードを一つの画面にまとめます。
+
+<p align="center"><img src="docs/screenshots/console-globe.png" alt="実際にレンダリングした WebGL 脅威地球儀とコンソール" width="100%" /></p>
+
+### ライブ攻撃フィード
+
+各イベントカードには送信元アドレス、対象となったハニーポット、メソッドとパス、重大度、Threat Score、Bot Score が表示されます。データはローカルの合成テレメトリです。
+
+<p align="center"><img src="docs/screenshots/attack-feed.png" alt="実際にレンダリングした攻撃フィード" width="78%" /></p>
+
+### 認証情報・攻撃インテリジェンス
+
+パスワードのパターン・長さ、識別子種別、攻撃メソッドを集計表示します。平文パスワードは保存も表示もしません。
+
+<p align="center"><img src="docs/screenshots/credential-intelligence.png" alt="実際にレンダリングした認証情報インテリジェンス" width="78%" /></p>
+
+### ハニーポットテーマ
+
+4 つのデコイスキンは同じテレメトリエンジンを共有し、OpenClaw、MCP、Langflow、n8n の画面を提供します。
+
+<p align="center"><img src="docs/screenshots/honeypot-themes.png" alt="マルチスキンのハニーポットテーマ" width="92%" /></p>
 
 リクエストは 4 つのスキンに振り分けられ、共通アナライザーが D1 に保存し、保護された Admin API が地球儀・Feed・認証情報集計を表示します。
+
+### Cloudflare Deploy Button
+
+最短で試すには Cloudflare Workers を利用できます。まず Fork して、公式ボタンからデプロイを開始してください。
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/stephenlzc/workers-honeypot)
+
+ボタンは Worker のデプロイフローを開始しますが、D1 と `ADMIN_PASSWORD` Secret は Fork 側で承認・設定する必要があります。
 
 ```bash
 git clone https://github.com/stephenlzc/workers-honeypot.git

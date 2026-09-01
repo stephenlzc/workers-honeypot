@@ -37,12 +37,29 @@ Every request is classified and stored in Cloudflare D1. The operations console 
 
 Example screenshots use synthetic or redacted telemetry and do not represent a global threat-intelligence feed.
 
-<p align="center">
-  <img src="docs/screenshots/console-globe.png" alt="WebGL threat globe" width="49%" />
-  <img src="docs/screenshots/attack-feed.png" alt="Source to target attack feed" width="49%" />
-  <img src="docs/screenshots/credential-intelligence.png" alt="Credential pattern intelligence" width="49%" />
-  <img src="docs/screenshots/honeypot-themes.png" alt="Multi-skin honeypot themes" width="49%" />
-</p>
+### Operations console
+
+The live console combines the WebGL threat globe, animated source-to-target arcs, trend cards, and the event stream in one view.
+
+<p align="center"><img src="docs/screenshots/console-globe.png" alt="Real WebGL threat globe and live console rendering" width="100%" /></p>
+
+### Live attack feed
+
+Each event card shows the observed source address, the selected honeypot target, request method and path, severity, threat score, and bot score. The example uses local synthetic telemetry.
+
+<p align="center"><img src="docs/screenshots/attack-feed.png" alt="Real live attack feed rendering" width="78%" /></p>
+
+### Credential and attack intelligence
+
+This panel reports aggregate password-pattern, password-length, identifier-type, and attack-method counts. Plaintext passwords are never retained or displayed.
+
+<p align="center"><img src="docs/screenshots/credential-intelligence.png" alt="Real credential intelligence panel rendering" width="78%" /></p>
+
+### Honeypot themes
+
+The four decoy skins share one telemetry engine while presenting distinct OpenClaw, MCP, Langflow, and n8n surfaces.
+
+<p align="center"><img src="docs/screenshots/honeypot-themes.png" alt="Multi-skin honeypot themes" width="92%" /></p>
 
 ## Architecture
 
@@ -102,7 +119,11 @@ The public configuration uses `YOUR_D1_DATABASE_ID`. Replace it with a database 
 
 ### Cloudflare Deploy Button
 
-The button starts a Cloudflare deployment flow, but it cannot safely create a D1 database or an Admin Secret without your authorization. Fork first, then run the guided setup (or provide your own fork URL to the button) and configure `ADMIN_PASSWORD`.
+Cloudflare Workers is the fastest way to try this project. Use the official button to start a deployment from your own Fork:
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/stephenlzc/workers-honeypot)
+
+The button starts the Worker deployment flow, but it cannot safely create a D1 database or an Admin Secret without your authorization. Fork first, then finish the guided setup and configure `ADMIN_PASSWORD`.
 
 ### GitHub Actions deployment
 

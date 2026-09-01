@@ -17,16 +17,41 @@ Cloudflare Workers와 D1에서 실행되는 다중 스킨 허니팟입니다. �
 - 비밀번호 길이/패턴과 식별자 유형 집계
 - 200개 이상의 공격 탐지 패턴
 
-## 빠른 시작
-
 ## 스크린샷과 아키텍처
 
-![Console](docs/screenshots/console-globe.png)
-![Attack feed](docs/screenshots/attack-feed.png)
-![Credential intelligence](docs/screenshots/credential-intelligence.png)
-![Honeypot themes](docs/screenshots/honeypot-themes.png)
+### 운영 콘솔
+
+라이브 콘솔은 WebGL 위협 지구본, 출발지-목적지 공격 아크, 추세 카드와 이벤트 피드를 한 화면에 결합합니다.
+
+<p align="center"><img src="docs/screenshots/console-globe.png" alt="실제 WebGL 위협 지구본과 콘솔 렌더링" width="100%" /></p>
+
+### 실시간 공격 피드
+
+각 이벤트 카드에는 관측된 출발지 주소, 대상 허니팟, 메서드와 경로, 심각도, Threat Score와 Bot Score가 표시됩니다. 데이터는 로컬 합성 텔레메트리입니다.
+
+<p align="center"><img src="docs/screenshots/attack-feed.png" alt="실제 실시간 공격 피드 렌더링" width="78%" /></p>
+
+### 자격 증명 및 공격 인텔리전스
+
+비밀번호 패턴과 길이, 식별자 유형, 공격 방법을 집계합니다. 평문 비밀번호는 저장하거나 표시하지 않습니다.
+
+<p align="center"><img src="docs/screenshots/credential-intelligence.png" alt="실제 자격 증명 인텔리전스 패널" width="78%" /></p>
+
+### 허니팟 테마
+
+네 가지 디코이 스킨은 하나의 텔레메트리 엔진을 공유하면서 OpenClaw, MCP, Langflow와 n8n 화면을 제공합니다.
+
+<p align="center"><img src="docs/screenshots/honeypot-themes.png" alt="멀티 스킨 허니팟 테마" width="92%" /></p>
 
 요청은 네 스킨으로 라우팅되고 공통 분석기가 D1에 저장하며 보호된 Admin API가 지구본, Feed와 자격 증명 집계를 제공합니다.
+
+### Cloudflare Deploy Button
+
+가장 빠르게 시험하려면 Cloudflare Workers를 사용할 수 있습니다. 먼저 Fork한 뒤 공식 버튼으로 배포를 시작하세요.
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/stephenlzc/workers-honeypot)
+
+버튼은 Worker 배포 흐름만 시작하며, D1과 `ADMIN_PASSWORD` Secret은 Fork에서 직접 승인하고 설정해야 합니다.
 
 ```bash
 git clone https://github.com/stephenlzc/workers-honeypot.git
