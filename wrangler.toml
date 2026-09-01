@@ -1,17 +1,11 @@
-name = "openclaw"
+name = "openclaw-honeypot"
 main = "src/index.js"
-compatibility_date = "2024-12-01"
+compatibility_date = "2026-08-15"
 workers_dev = true
 
-# Workers Observability - real-time logs via `wrangler tail`
 [observability]
 enabled = true
 head_sampling_rate = 1
-
-# Custom domain route
-[[routes]]
-pattern = "your-honeypot-domain.com/*"
-zone_name = "your-domain.com"
 
 [vars]
 ENVIRONMENT = "production"
@@ -22,13 +16,12 @@ database_name = "openclaw-honeypot"
 database_id = "YOUR_D1_DATABASE_ID"
 
 # ============================================================
-# CLOUDFLARE DASHBOARD SETTINGS (configure manually)
-# Dashboard: https://dash.cloudflare.com > hxorz.com zone
+# Optional Cloudflare Dashboard hardening (honeypot hostnames only)
 #
-# 1. Security > Overview > Security Level: "Essentially Off"
-# 2. Security > WAF > Managed Rules: 全部禁用 (或 Skip WAF 规则)
-# 3. Security > Bots > Bot Fight Mode: Off
-# 4. Speed > Optimization > Rocket Loader: Off
-# 5. Caching > Cache Rules: 匹配 claw.hxorz.com/*, Cache Status = Bypass
-# 6. Network > WebSockets: On
+# 1. Security Level: Essentially Off
+# 2. WAF Managed Rules: disable only for the honeypot hostnames
+# 3. Bot Fight Mode: Off
+# 4. Rocket Loader: Off
+# 5. Cache: Bypass
+# 6. WebSockets: On
 # ============================================================

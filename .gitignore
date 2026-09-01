@@ -3,3 +3,7 @@ node_modules/
 .dev.vars
 dist/
 *.pdf
+*.bak
+.DS_Store
+backups/
+docs/screenshots/raw/
