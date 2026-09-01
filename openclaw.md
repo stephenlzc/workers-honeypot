@@ -256,11 +256,11 @@ AI 的"记忆"里放了一堆凭证，还有伪造的银行账户。这个端点
 
 ```bash
 # 1. 创建 D1 数据库
-npx wrangler d1 create openclaw-honeypot
+npx wrangler d1 create workers-honeypot
 # 把返回的 database_id 填进 wrangler.toml
 
 # 2. 初始化表结构
-npx wrangler d1 execute openclaw-honeypot --remote --file=schema.sql
+npx wrangler d1 execute workers-honeypot --remote --file=schema.sql
 
 # 3. 设置管理密码
 npx wrangler secret put ADMIN_PASSWORD

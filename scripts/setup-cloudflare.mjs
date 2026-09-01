@@ -3,7 +3,7 @@
 import { execFileSync, spawnSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const DB_NAME = 'openclaw-honeypot';
+const DB_NAME = 'workers-honeypot';
 const CONFIG = 'wrangler.toml';
 
 function assertDatabaseId(value) {

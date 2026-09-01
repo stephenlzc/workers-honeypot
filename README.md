@@ -102,15 +102,15 @@ npm ci
 npm run setup:cloudflare
 ```
 
-The setup command checks Wrangler authentication, creates or reuses the `openclaw-honeypot` D1 database, applies `schema.sql`, prompts for your Admin password, and deploys the Worker. It never writes the password to a file.
+The setup command checks Wrangler authentication, creates or reuses the `workers-honeypot` D1 database, applies `schema.sql`, prompts for your Admin password, and deploys the Worker. It never writes the password to a file.
 
 ### Manual setup
 
 ```bash
 npx wrangler login
-npx wrangler d1 create openclaw-honeypot
+npx wrangler d1 create workers-honeypot
 # Put the returned ID in wrangler.toml
-npx wrangler d1 execute openclaw-honeypot --remote --file=schema.sql
+npx wrangler d1 execute workers-honeypot --remote --file=schema.sql
 npx wrangler secret put ADMIN_PASSWORD
 npm run deploy
 ```

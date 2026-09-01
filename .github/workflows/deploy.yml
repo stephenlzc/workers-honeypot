@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           node --input-type=module -e "import fs from 'node:fs'; const id = process.env.CLOUDFLARE_D1_DATABASE_ID; if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error('CLOUDFLARE_D1_DATABASE_ID must be a UUID'); const path='wrangler.toml'; const config=fs.readFileSync(path,'utf8'); fs.writeFileSync(path, config.replace('YOUR_D1_DATABASE_ID', id));"
-      - run: npx wrangler d1 execute openclaw-honeypot --remote --file=schema.sql
+      - run: npx wrangler d1 execute workers-honeypot --remote --file=schema.sql
       - name: Configure Admin password
         shell: bash
         run: printf '%s' "$ADMIN_PASSWORD" | npx wrangler secret put ADMIN_PASSWORD

@@ -1,4 +1,4 @@
-name = "openclaw-honeypot"
+name = "workers-honeypot"
 main = "src/index.js"
 compatibility_date = "2026-08-15"
 workers_dev = true
@@ -12,7 +12,7 @@ ENVIRONMENT = "production"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "openclaw-honeypot"
+database_name = "workers-honeypot"
 database_id = "YOUR_D1_DATABASE_ID"
 
 # ============================================================

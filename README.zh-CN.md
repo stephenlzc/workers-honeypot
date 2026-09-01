@@ -73,8 +73,8 @@ Cloudflare Workers 是最快的试用方式。先 Fork 本项目，再点击官�
 
 ```bash
 npx wrangler login
-npx wrangler d1 create openclaw-honeypot
-npx wrangler d1 execute openclaw-honeypot --remote --file=schema.sql
+npx wrangler d1 create workers-honeypot
+npx wrangler d1 execute workers-honeypot --remote --file=schema.sql
 npx wrangler secret put ADMIN_PASSWORD
 npm run deploy
 ```
