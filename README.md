@@ -22,7 +22,7 @@
 
 ## What it does
 
-OpenClaw Honeypot presents realistic decoy interfaces for four commonly targeted automation surfaces:
+Workers Honeypot presents realistic decoy interfaces for four commonly targeted automation surfaces:
 
 | Skin | Decoy surface | Example telemetry |
 | --- | --- | --- |

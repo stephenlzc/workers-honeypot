@@ -1,6 +1,6 @@
 # Workers Honeypot
 
-Cloudflare Workers와 D1에서 실행되는 다중 스킨 허니팟입니다. 방어적 보안 연구, 공격 텔레메트리, 자격 증명 패턴 분석 및 실시간 위협 시각화를 위한 프로젝트입니다.
+Workers Honeypot은 Cloudflare Workers와 D1에서 실행되는 다중 스킨 허니팟입니다. 방어적 보안 연구, 공격 텔레메트리, 자격 증명 패턴 분석 및 실시간 위협 시각화를 위한 프로젝트입니다.
 
 [English](README.md) · [中文](README.zh-CN.md) · [Español](README.es.md) · [日本語](README.ja.md) · [Português](README.pt-BR.md)
 

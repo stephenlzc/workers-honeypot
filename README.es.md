@@ -1,6 +1,6 @@
 # Workers Honeypot
 
-Un honeypot multi-skin sobre Cloudflare Workers y D1 para investigación defensiva, telemetría de ataques, análisis de patrones de credenciales y visualización de amenazas en tiempo real.
+Workers Honeypot es un honeypot multi-skin sobre Cloudflare Workers y D1 para investigación defensiva, telemetría de ataques, análisis de patrones de credenciales y visualización de amenazas en tiempo real.
 
 [English](README.md) · [中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Português](README.pt-BR.md)
 

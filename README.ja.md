@@ -1,6 +1,6 @@
 # Workers Honeypot
 
-Cloudflare Workers と D1 で動作する多テーマ honeypot です。防御的なセキュリティ研究、攻撃テレメトリ、認証情報パターン分析、リアルタイム脅威可視化を目的とします。
+Workers Honeypot は Cloudflare Workers と D1 で動作する多テーマ honeypot です。防御的なセキュリティ研究、攻撃テレメトリ、認証情報パターン分析、リアルタイム脅威可視化を目的とします。
 
 [English](README.md) · [中文](README.zh-CN.md) · [Español](README.es.md) · [한국어](README.ko.md) · [Português](README.pt-BR.md)
 

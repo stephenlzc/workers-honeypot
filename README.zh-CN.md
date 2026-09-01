@@ -1,6 +1,6 @@
 # Workers Honeypot
 
-一个运行在 Cloudflare Workers + D1 上的多主题蜜罐，用于防御性安全研究、攻击遥测、凭据模式分析和实时威胁可视化。
+Workers Honeypot 是一个运行在 Cloudflare Workers + D1 上的多主题蜜罐，用于防御性安全研究、攻击遥测、凭据模式分析和实时威胁可视化。
 
 [English](README.md) · [Español](README.es.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Português](README.pt-BR.md)
 
